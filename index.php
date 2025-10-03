@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-$title = "";
-=======
-$title = "home"; 
->>>>>>> 29e48444bd6edf4d9291cccc8c57ee3658c3a088
+$title = "Home";
 include 'includes/header.php';
 ?>
 <div class="py-5 bg-dongker px-16 bg-don shadow-md">
