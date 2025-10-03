@@ -1,5 +1,5 @@
 <?php
-$title = "home";
+$title = "";
 include 'includes/header.php';
 ?>
 <div class="py-5 bg-dongker px-16 bg-don shadow-md">
