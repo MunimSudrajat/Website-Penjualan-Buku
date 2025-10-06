@@ -258,9 +258,9 @@ include 'includes/header.php';
 <!-- ABOUT START -->
 <div class="py-10 px-6 bg-dongker">
     <div class="grid grid-cols-1 justify-items-center md:grid-cols-2 ">
-        <img src="./assets/img/manypeople.png" class="w-[250px] h-[250px] md:w-[350px] md:h-[350px]" alt="">
+        <img src="./assets/img/manypeople.png" class="w-[300px] h-[250px] md:w-[400px] md:h-[350px]" alt="">
         <div class="space-y-5 text-center grid px-10 justify-items-center md:flex md:flex-col md:justify-center md:text-left md:px-16">
-            <h1 class="text-white text-2xl font-bold">About Our BookStore</h1>
+            <h1 class="text-white text-2xl font-bold">About BookStore</h1>
             <p class="text-white font-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque eos molestias ipsum alias porro voluptatibus voluptas dicta, dolor, necessitatibus aspernatur architecto adipisci in explicabo molestiae illo quisquam rerum expedita ipsam.</p>
             <div class="flex items-center">
                 <a href="" class="text-white text-sm md:text-sm bg-indigo-600 py-2 px-4 md:py-2 md:px-6 rounded-full font-bold hover:bg-indigo-500 transition-all duration-200 focus:bg-indigo-400">Read More</a>
@@ -269,6 +269,11 @@ include 'includes/header.php';
     </div>
 </div>
 <!-- ABOUT END-->
+<!-- FOOTER START -->
+ <div class="py-5 px-6">
+    <p class="text-center text-indigo-600 font-bold">© 2025 LP3I CIREBON. All Rights Reserved.</p>
+ </div>
+<!-- FOOTER END -->
 
 
 <?php include 'includes/footer.php'; ?>
