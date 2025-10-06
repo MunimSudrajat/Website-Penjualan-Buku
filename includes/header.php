@@ -19,4 +19,4 @@
   </script>
 </head>
 
-<body class="bg-slate-50">
+<body class="h-[1000px]">
