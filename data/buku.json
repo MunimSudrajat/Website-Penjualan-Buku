@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "judul": "Pemrograman Dasar C++",
+    "penulis": "Adib Fadhlil",
+    "harga": 75000,
+    "gambar": "../assets/img/assets/img/2k6cjwpghl675m9qzvyyp5.jpg",
+    "deskripsi": "Buku ini membahas dasar-dasar pemrograman C++ untuk pemula."
+  },
+  {
+    "id": 2,
+    "judul": "Belajar SQL dari Nol",
+    "penulis": "Muhammad Arif",
+    "harga": 68000,
+    "gambar": "../assets/img/assets/img/assets/img/6a378f02-8798-485e-b7d9-874d6aa78762.jpg",
+    "deskripsi": "Panduan lengkap belajar SQL dengan perbandingan terhadap bahasa C++."
+  },
+  {
+    "id": 3,
+    "judul": "Teknologi Internet of Things (IoT)",
+    "penulis": "Siti Rahma",
+    "harga": 82000,
+    "gambar": "../assets/img/assets/img/assets/img/6uvrurklaulrsxsavgv7yk.jpg",
+    "deskripsi": "Pengenalan konsep dan implementasi IoT dengan ESP32 dan sensor."
+  }
+]
