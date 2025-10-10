@@ -1,324 +1,236 @@
-<?php
-$title = "Home";
-include 'includes/header.php';
-?>
-<!-- NAVBAR START -->
-<div class="py-5 px-8 bg-dongker md:px-16 w-full shadow-md fixed z-50">
-    <div class="flex justify-between">
-        <div class="flex items-center">
-            <!-- DISPLAY DEKSTOP START  -->
-            <lord-icon
-                src="https://cdn.lordicon.com/hjrbjhnq.json"
-                trigger="hover"
-                colors="primary:#ffffff"
-                class="h-6 w-6 md:h-8 md:w-8 text-white hidden md:flex">
-            </lord-icon>
-            <!-- DISPLAY DEKSTOP END-->
-            <lord-icon
-                src="https://cdn.lordicon.com/tewlfgbl.json"
-                trigger="hover"
-                colors="primary:#ffffff"
-                class="h-6 w-6 md:h-8 md:w-8 text-white cursor-pointer md:hidden"
-                id="humberger">
-            </lord-icon>
-            <a href="" class="text-xl md:text-2xl font-extrabold text-white hover:text-slate-200 transition-all duration-200 ml-3">BOOKStore</a>
-        </div>
-        <!-- DISPLAY DEKSTOP START  -->
-        <div class="m-auto space-x-11 text-center hidden md:flex">
-            <a href="" class="font-semibold text-white hover:scale-125 transition-all duration-300">Home</a>
-            <a href="" class="font-semibold text-white hover:scale-125 transition-all duration-300">Katalog</a>
-            <a href="" class="font-semibold text-white hover:scale-125 transition-all duration-300">Kategori</a>
-            <a href="" class="font-semibold text-white hover:scale-125 transition-all duration-300">Tentang</a>
-        </div>
-        <!-- DISPLAY DEKSTOP END  -->
-        <div class="flex gap-5">
-            <!-- DISPLAY DEKSTOP START  -->
-            <div class="bg-slate-50 w-[250px] py-1 px-3 items-center space-x-5 rounded-md overflow-hidden shadow-md hidden md:flex">
-                <lord-icon
-                    src="https://cdn.lordicon.com/xaekjsls.json"
-                    trigger="hover" class="w-6 h-6">
-                </lord-icon>
-                <input class="text-sm w-full outline-none" type="text" name="" id="" placeholder="Cari buku...">
-            </div>
-            <!-- DISPLAY DEKSTOP START  -->
-            <!-- MOBILE SEARCH START -->
-            <div class="absolute right-20 top-28 flex bg-indigo-600 w-[300px] py-2 px-3 items-center space-x-5 rounded-full overflow-hidden shadow-lg border border-gray-200 hidden" id="searchMobile">
-                <lord-icon
-                    src="https://cdn.lordicon.com/xaekjsls.json"
-                    trigger="hover" class="w-6 h-6" colors="primary:#ffffff">
-                </lord-icon>
-                <input class="text-sm text-white bg-indigo-600 w-full outline-none" type="text" name="" id="" placeholder="Cari buku...">
-            </div>
-            <!-- MOBILE SEARCH END -->
-            <div class="flex items-center gap-5">
-                <lord-icon
-                    src="https://cdn.lordicon.com/xaekjsls.json"
-                    trigger="hover"
-                    colors="primary:#ffffff,secondary:#ffffff"
-                    class="w-6 h-6 cursor-pointer md:w-8 md:h-8 mb-1 md:hidden"
-                    id="searchMobileNav">
-                </lord-icon>
-                <?php session_start(); ?>
-                <div class="relative group" id="userDropdown">
-                    <button id="userIcon" class="flex items-center focus:outline-none">
-                        <lord-icon
-                            src="https://cdn.lordicon.com/bushiqea.json"
-                            trigger="hover"
-                            colors="primary:#ffffff,secondary:#ffffff"
-                            class="w-6 h-6 md:w-8 md:h-8">
-                        </lord-icon>
-                    </button>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOOKstore</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Lordicon -->
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
 
-                    <!-- Dropdown -->
-                    <div id="dropdownMenu"
-                        class="absolute right-0 mt-3 w-56 bg-[#001f54] text-white rounded-xl shadow-lg border border-white/10 opacity-0 scale-95
-               transition duration-300 ease-in-out pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Poppins', sans-serif;
+    }
 
-                        <!-- Arrow (segitiga kecil di atas) -->
-                        <div class="absolute -top-2 right-6 w-4 h-4 bg-[#001f54] rotate-45 border-t border-l border-white/10"></div>
+    .navbar {
+      background-color: #0d1b2a; /* warna dongker */
+    }
 
-                        <div class="p-3 flex items-center space-x-3 border-b border-white/10">
-                            <!-- Avatar bulat dummy -->
-                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                                <i class="bi bi-person-fill text-white text-xl"></i>
-                            </div>
+    .nav-link {
+      color: #fff !important;
+      margin: 0 10px;
+    }
 
-                            <!-- Nama user -->
-                            <div class="flex flex-col">
-                                <?php if (isset($_SESSION['username'])): ?>
-                                    <span class="font-semibold"><?= htmlspecialchars($_SESSION['username']) ?></span>
-                                    <span class="text-xs text-gray-300">Online</span>
-                                <?php else: ?>
-                                    <span class="font-semibold text-gray-200">Belum Login</span>
-                                    <span class="text-xs text-gray-400">Guest</span>
-                                <?php endif; ?>
-                            </div>
-                        </div>
+    .nav-link:hover {
+      color: #a29bfe !important; /* warna ungu muda */
+    }
 
-                        <!-- Tombol Login/Logout -->
-                        <div class="p-3">
-                            <?php if (isset($_SESSION['username'])): ?>
-                                <a href="pages/logout.php"
-                                    class="block w-full text-center py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 font-semibold transition">
-                                    Logout
-                                </a>
-                            <?php else: ?>
-                                <a href="pages/login.php"
-                                    class="block w-full text-center py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 font-semibold transition">
-                                    Login
-                                </a>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- DISPLAY DEKSTOP END  -->
-        </div>
-    </div>
-</div>
-<div id="dropDown-mobile" class="grid w-full py-3 h-[300px] space-y-2 bg-dongker hidden fixed top-[70px] items-center z-50">
-    <a href="" class="font-semibold text-white focus:bg-gray-600 py-3 px-6">Home</a>
-    <a href="" class="font-semibold text-white focus:bg-gray-600 py-3 px-6">Katalog</a>
-    <a href="" class="font-semibold text-white focus:bg-gray-600 py-3 px-6">Kategori</a>
-    <a href="" class="font-semibold text-white focus:bg-gray-600 py-3 px-6">Keranjang</a>
-    <a href="" class="font-semibold text-white focus:bg-gray-600 py-3 px-6">Profile</a>
-</div>
-<!-- NAVBAR END -->
-<!-- HERO START -->
-<div class="px-6 py-[100px] md:py-[150px] bg-slate-50">
-    <div class="grid grid-cols-1 md:grid-cols-2 ">
-        <div class="space-y-3 md:space-y-8 m-auto ">
-            <h1 class="font-extrabold text-xl md:text-4xl text-gray-600">TEMUKAN BUKU <br> FAVORITMU DENGAN <br> MUDAH</h1>
-            <P class="text-slate-500 text-sm">Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br> Nostrum qui reiciendis ipsum rerum, harum rem odit incidunt <br> tempore ducimus laboriosam animi?</P>
-            <!-- <div class="bg-indigo-600"> -->
-            <button type="submit" class="text-white text-sm md:text-sm bg-indigo-600 py-2 px-4 md:py-2 md:px-6 rounded-full font-bold hover:bg-indigo-500 transition-all duration-200 focus:bg-indigo-400">Cari Buku</button>
-            <!-- </div> -->
-        </div>
-        <img class="md:w-[450px] md:h-[400px] m-auto hidden md:flex" src="./assets/img/iliustration.png" alt="">
-    </div>
-</div>
-<!-- HERO END -->
-<!-- KEUNGGULAN START -->
-<div class="px-16 py-20 md:py-28 bg-dongker">
-    <div class="grid gap-7 justify-center md:flex md:justify-evenly">
-        <div class="flex items-center gap-6 bg-dongker p-5 w-[300px] rounded-full bg-slate-50 shadow hover:scale-105 transition-all duration-200">
-            <lord-icon
-                src="https://cdn.lordicon.com/ftasfhkn.json"
-                trigger="hover"
-                class="md:w-10 md:h-10 w-8 h-8">
-            </lord-icon>
-            <p class="text-dongker">Koleksi Buku Lengkap</p>
-        </div>
-        <div class="flex items-center gap-6 bg-dongker p-5 w-[300px] rounded-full bg-slate-50 shadow hover:scale-105 transition-all duration-200">
-            <lord-icon
-                src="https://cdn.lordicon.com/ynsswhvj.json"
-                trigger="hover"
-                class="md:w-10 md:h-10 w-8 h-8">
-            </lord-icon>
-            <p class="text-dongker">Pembayaran Mudah & Aman</p>
-        </div>
-        <div class="flex items-center gap-6 bg-dongker p-5 w-[300px] rounded-full bg-slate-50 shadow hover:scale-105 transition-all duration-200">
-            <lord-icon
-                src="https://cdn.lordicon.com/xwpcjash.json"
-                trigger="hover"
-                class="md:w-10 md:h-10 w-8 h-8">
-            </lord-icon>
-            <p class="text-dongker">Pengiriman Cepat</p>
-        </div>
-        <div class="flex items-center gap-6 bg-dongker p-5 w-[300px] rounded-full bg-slate-50 shadow hover:scale-105 transition-all duration-200">
-            <lord-icon
-                src="https://cdn.lordicon.com/zdfcfvwu.json"
-                trigger="hover"
-                class="md:w-10 md:h-10 w-8 h-8">
-            </lord-icon>
-            <p class="text-dongker">Buku 100% Original</p>
-        </div>
-    </div>
-</div>
-<!-- KEUNGGULAN END -->
-<!-- QUOTE START -->
-<div class="bg-center bg-cover bg-fixed w-full h-[350px] bg-no-repeat grid items-center" style="background-image: url(./assets/img/orangBacaBuku.jpg);">
-    <div class="">
-        <p class="text-center text-white text-md md:text-xl italic">"Membaca adalah jendela dunia. Makin banyak membaca, makin banyak pula pengetahuan yang kita dapat." <br> – Najwa Shihab </p>
-    </div>
-</div>
-<!-- QUOTE END -->
-<!-- REALEASED BOOK START -->
-<div class="px-6 py-16 bg-dongker">
-    <h3 class="font-bold text-xl text-gray-200 md:text-2xl text-center">Baru Rilis</h3>
-    <hr class="w-24 h-[3px] bg-slate-800 mt-1 m-auto">
-    <div class="grid grid-cols-2 justify-items-center md:flex flex-wrap justify-center md:gap-5">
-        <div class="mt-5 bg-gray-200 grid justify-items-center w-48 h-94 p-5 text-center rounded-xl shadow-lg md:w-72">
-            <img src="./assets/img/2k6cjwpghl675m9qzvyyp5.jpg" class="w-52 h-60 md:w-60 md:h-72" alt="">
-            <p class="font-bold text-lg text-dongker mt-2">A Guide Book To Slow Down Your Life</p>
-            <p class="text-dongker">Rp 150.000.00,-</p>
-            <button class="bg-indigo-600 w-full py-2 text-sm m-auto rounded-lg text-gray-200 hover:bg-indigo-500 focus:bg-indigo-400 mt-3">Beli</button>
-        </div>
-        <div class="mt-5 bg-gray-200 grid justify-items-center w-48 h-94 p-5 text-center rounded-xl shadow-lg md:w-64 md:h-94">
-            <img src="./assets/img/6a378f02-8798-485e-b7d9-874d6aa78762.jpg" class="w-52 h-60 md:w-60 md:h-72" alt="">
-            <p class="font-bold text-lg text-dongker mt-2">Good Vibes Good Life</p>
-            <p class="text-dongker">Rp 180.000.00,-</p>
-            <button class="bg-indigo-600 w-full py-2 text-sm m-auto rounded-lg text-gray-200 hover:bg-indigo-500 focus:bg-indigo-400 mt-3">Beli</button>
-        </div>
-        <div class="mt-5 bg-gray-200 grid justify-items-center w-48 h-94 p-5 text-center rounded-xl shadow-lg md:w-64 md:h-94">
-            <img src="./assets/img/6uvrurklaulrsxsavgv7yk.jpg" class="w-52 h-60 md:w-60 md:h-72" alt="">
-            <p class="font-bold text-lg text-dongker mt-2">How To Be Great</p>
-            <p class="text-dongker">Rp 250.000.00,-</p>
-            <button class="bg-indigo-600 w-full py-2 text-sm m-auto rounded-lg text-gray-200 hover:bg-indigo-500 focus:bg-indigo-400 mt-3">Beli</button>
-        </div>
-        <div class="mt-5 bg-gray-200 grid justify-items-center w-48 h-94 p-5 text-center rounded-xl shadow-lg md:w-64 md:h-94">
-            <img src="./assets/img/6xviaeyshc4od9atcs6fd4.jpg" class="w-52 h-60 md:w-60 md:h-72" alt="">
-            <p class="font-bold text-lg text-dongker mt-2">Kita Semua Pandai Bicara</p>
-            <p class="text-dongker">Rp 150.000.00,-</p>
-            <button class="bg-indigo-600 w-full py-2 text-sm m-auto rounded-lg text-gray-200 hover:bg-indigo-500 focus:bg-indigo-400 mt-3">Beli</button>
-        </div>
-        <div class="mt-5 bg-gray-200 grid justify-items-center w-48 h-94 p-5 text-center rounded-xl shadow-lg md:w-64 md:h-94">
-            <img src="./assets/img/9786238036004-pahami_jenis_otak-1.jpg" class="w-52 h-60 md:w-60 md:h-72" alt="">
-            <p class="font-bold text-lg text-dongker mt-2">Maksimalkan Jenis Otak Anda</p>
-            <p class="text-dongker">Rp 300.000.00,-</p>
-            <button class="bg-indigo-600 w-full py-2 text-sm m-auto rounded-lg text-gray-200 hover:bg-indigo-500 focus:bg-indigo-400 mt-3">Beli</button>
-        </div>
-        <div class="mt-5 bg-gray-200 grid justify-items-center w-48 h-94 p-5 text-center rounded-xl shadow-lg md:w-64 md:h-94">
-            <img src="./assets/img/9786239700225_-_Ionelines.jpg" class="w-52 h-60 md:w-60 md:h-72" alt="">
-            <p class="font-bold text-lg text-dongker mt-2">Loneliness</p>
-            <p class="text-dongker">Rp 90.000.00,-</p>
-            <button class="bg-indigo-600 w-full py-2 text-sm m-auto rounded-lg text-gray-200 hover:bg-indigo-500 focus:bg-indigo-400 mt-3">Beli</button>
-        </div>
-    </div>
-</div>
-<!-- REALEASED BOOK START -->
-<!-- BOOK CATEGORIES START -->
-<div class="py-20 px-6">
-    <h3 class="font-bold text-xl text-dongker md:text-2xl text-center">Book Categories</h3>
-    <hr class="w-24 h-[3px] bg-slate-800 mt-1 m-auto">
-    <div class="grid grid-cols-1 md:grid-cols-3 mt-3">
-        <div class="grid grid-cols-1 justify-items-center mt-5 px-8 text-center space-y-3">
-            <div class="bg-gray-200 shadow-lg p-3 rounded-full flex items-center">
-                <lord-icon
-                    src="https://cdn.lordicon.com/izhpqsis.json"
-                    trigger="hover"
-                    class="h-10 w-10">
-                </lord-icon>
-            </div>
-            <p class="font-bold text-xl">Novel</p>
-            <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores hic totam autem molestiae beatae aliquam excepturi officiis facilis.</p>
-        </div>
-        <div class="grid grid-cols-1 justify-items-center mt-5 px-8 text-center space-y-3">
-            <div class="bg-gray-200 shadow-lg p-3 rounded-full flex items-center">
-                <lord-icon
-                    src="https://cdn.lordicon.com/qvaikltw.json"
-                    trigger="hover"
-                    class="h-10 w-10">
-                </lord-icon>
-            </div>
-            <p class="font-bold text-xl">Agama</p>
-            <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores hic totam autem molestiae beatae aliquam excepturi officiis facilis.</p>
-        </div>
-        <div class="grid grid-cols-1 justify-items-center mt-5 px-8 text-center space-y-3">
-            <div class="bg-gray-200 shadow-lg p-3 rounded-full flex items-center">
-                <lord-icon
-                    src="https://cdn.lordicon.com/wzefksjc.json"
-                    trigger="hover"
-                    class="h-10 w-10">
-                </lord-icon>
-            </div>
-            <p class="font-bold text-xl">Alam</p>
-            <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores hic totam autem molestiae beatae aliquam excepturi officiis facilis.</p>
-        </div>
-        <div class="grid grid-cols-1 justify-items-center mt-5 px-8 text-center space-y-3">
-            <div class="bg-gray-200 shadow-lg p-3 rounded-full flex items-center">
-                <lord-icon
-                    src="https://cdn.lordicon.com/iiudwewg.json"
-                    trigger="hover"
-                    class="h-10 w-10">
-                </lord-icon>
-            </div>
-            <p class="font-bold text-xl">Biografi</p>
-            <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores hic totam autem molestiae beatae aliquam excepturi officiis facilis.</p>
-        </div>
-        <div class="grid grid-cols-1 justify-items-center mt-5 px-8 text-center space-y-3">
-            <div class="bg-gray-200 shadow-lg p-3 rounded-full flex items-center">
-                <lord-icon
-                    src="https://cdn.lordicon.com/mitohekz.json"
-                    trigger="hover"
-                    class="h-10 w-10">
-                </lord-icon>
-            </div>
-            <p class="font-bold text-xl">Keuangan</p>
-            <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores hic totam autem molestiae beatae aliquam excepturi officiis facilis.</p>
-        </div>
-        <div class="grid grid-cols-1 justify-items-center mt-5 px-8 text-center space-y-3">
-            <div class="bg-gray-200 shadow-lg p-3 rounded-full flex items-center">
-                <lord-icon
-                    src="https://cdn.lordicon.com/toprgkru.json"
-                    trigger="hover"
-                    class="h-10 w-10">
-                </lord-icon>
-            </div>
-            <p class="font-bold text-xl">Sains</p>
-            <p class="text-sm">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolores hic totam autem molestiae beatae aliquam excepturi officiis facilis.</p>
-        </div>
-    </div>
-</div>
-<!-- ABOUT START -->
-<div class="py-10 px-6 bg-dongker">
-    <div class="grid grid-cols-1 justify-items-center md:grid-cols-2 ">
-        <img src="./assets/img/manypeople.png" class="w-[300px] h-[250px] md:w-[400px] md:h-[350px]" alt="">
-        <div class="space-y-5 text-center grid px-10 justify-items-center md:flex md:flex-col md:justify-center md:text-left md:px-16">
-            <h1 class="text-white text-2xl font-bold">About BookStore</h1>
-            <p class="text-white font-thin">Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque eos molestias ipsum alias porro voluptatibus voluptas dicta, dolor, necessitatibus aspernatur architecto adipisci in explicabo molestiae illo quisquam rerum expedita ipsam.</p>
-            <div class="flex items-center">
-                <a href="" class="text-white text-sm md:text-sm bg-indigo-600 py-2 px-4 md:py-2 md:px-6 rounded-full font-bold hover:bg-indigo-500 transition-all duration-200 focus:bg-indigo-400">Read More</a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- ABOUT END-->
-<!-- FOOTER START -->
-<div class="py-5 px-6">
-    <p class="text-center text-indigo-600 font-bold">© 2025 LP3I CIREBON. All Rights Reserved.</p>
-</div>
-<!-- FOOTER END -->
+    .search-box input {
+      border-radius: 20px;
+      border: none;
+      padding: 6px 15px;
+    }
 
+    .search-box input:focus {
+      outline: none;
+      box-shadow: 0 0 5px #a29bfe;
+    }
 
-<?php include 'includes/footer.php'; ?>
+    .keunggulan-icon {
+      font-size: 40px;
+      color: #a29bfe;
+    }
+
+    .section-title {
+      color: #0d1b2a;
+      font-weight: bold;
+    }
+
+    footer {
+      background-color: #0d1b2a;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .kategori-card, .buku-card {
+      transition: transform 0.3s ease;
+    }
+
+    .kategori-card:hover, .buku-card:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark px-4">
+    <a class="navbar-brand fw-bold text-uppercase" href="#">BOOKstore</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Katalog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Kategori</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Tentang</a></li>
+      </ul>
+    </div>
+
+    <div class="d-flex align-items-center">
+      <div class="search-box me-3">
+        <input type="text" placeholder="Cari buku...">
+      </div>
+      <lord-icon
+        src="https://cdn.lordicon.com/ljvjsnvh.json"
+        trigger="hover"
+        style="width:35px;height:35px">
+      </lord-icon>
+    </div>
+  </nav>
+
+  <!-- Carousel -->
+  <div id="carouselExample" class="carousel slide mt-2" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" class="d-block w-100" height="400" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" class="d-block w-100" height="400" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" class="d-block w-100" height="400" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <!-- Keunggulan -->
+  <section class="container my-5 text-center">
+    <h2 class="section-title mb-4">Keunggulan Kami</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <lord-icon src="https://cdn.lordicon.com/egiwmiit.json" trigger="hover" style="width:80px;height:80px"></lord-icon>
+        <h5 class="mt-3">Buku Berkualitas</h5>
+        <p>Kami menyediakan berbagai buku original dengan kualitas terbaik.</p>
+      </div>
+      <div class="col-md-4">
+        <lord-icon src="https://cdn.lordicon.com/oezixobx.json" trigger="hover" style="width:80px;height:80px"></lord-icon>
+        <h5 class="mt-3">Pengiriman Cepat</h5>
+        <p>Pesanan Anda akan kami proses dan kirim dengan cepat.</p>
+      </div>
+      <div class="col-md-4">
+        <lord-icon src="https://cdn.lordicon.com/nocovwne.json" trigger="hover" style="width:80px;height:80px"></lord-icon>
+        <h5 class="mt-3">Harga Terjangkau</h5>
+        <p>Kami menawarkan harga kompetitif untuk semua kalangan.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kategori Buku -->
+  <section class="container my-5">
+    <h2 class="section-title text-center mb-4">Kategori Buku</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-3">
+        <div class="card kategori-card p-3 shadow-sm">
+          <lord-icon src="https://cdn.lordicon.com/zpxybbhl.json" trigger="hover" style="width:70px;height:70px"></lord-icon>
+          <h6 class="mt-2">Teknologi</h6>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card kategori-card p-3 shadow-sm">
+          <lord-icon src="https://cdn.lordicon.com/wxnxiano.json" trigger="hover" style="width:70px;height:70px"></lord-icon>
+          <h6 class="mt-2">Bisnis</h6>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card kategori-card p-3 shadow-sm">
+          <lord-icon src="https://cdn.lordicon.com/nobciafz.json" trigger="hover" style="width:70px;height:70px"></lord-icon>
+          <h6 class="mt-2">Novel</h6>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card kategori-card p-3 shadow-sm">
+          <lord-icon src="https://cdn.lordicon.com/yyecauzv.json" trigger="hover" style="width:70px;height:70px"></lord-icon>
+          <h6 class="mt-2">Pendidikan</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contoh Buku -->
+  <section class="container my-5">
+    <h2 class="section-title text-center mb-4">Rekomendasi Buku</h2>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="card buku-card shadow-sm">
+          <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e" class="card-img-top" alt="Buku 1">
+          <div class="card-body text-center">
+            <h6 class="card-title">Atomic Habits</h6>
+            <p class="text-muted">Rp 120.000</p>
+            <button class="btn btn-sm btn-primary">Beli</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card buku-card shadow-sm">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f" class="card-img-top" alt="Buku 2">
+          <div class="card-body text-center">
+            <h6 class="card-title">Rich Dad Poor Dad</h6>
+            <p class="text-muted">Rp 95.000</p>
+            <button class="btn btn-sm btn-primary">Beli</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card buku-card shadow-sm">
+          <img src="https://images.unsplash.com/photo-1581091870622-3b5c5e9f8f5c" class="card-img-top" alt="Buku 3">
+          <div class="card-body text-center">
+            <h6 class="card-title">The Psychology of Money</h6>
+            <p class="text-muted">Rp 110.000</p>
+            <button class="btn btn-sm btn-primary">Beli</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="card buku-card shadow-sm">
+          <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" class="card-img-top" alt="Buku 4">
+          <div class="card-body text-center">
+            <h6 class="card-title">Deep Work</h6>
+            <p class="text-muted">Rp 130.000</p>
+            <button class="btn btn-sm btn-primary">Beli</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tentang -->
+  <section class="container my-5 text-center">
+    <h2 class="section-title mb-4">Tentang BOOKstore</h2>
+    <p class="text-muted px-5">
+      BOOKstore adalah platform penjualan buku online yang menyediakan berbagai macam buku dari berbagai kategori. 
+      Kami berkomitmen untuk memberikan pengalaman belanja yang menyenangkan dan efisien dengan pelayanan terbaik.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 BOOKstore | All Rights Reserved</p>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
