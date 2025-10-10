@@ -58,14 +58,59 @@ include 'includes/header.php';
                     class="w-6 h-6 cursor-pointer md:w-8 md:h-8 mb-1 md:hidden"
                     id="searchMobileNav">
                 </lord-icon>
-                <a href="">
-                    <lord-icon
-                        src="https://cdn.lordicon.com/bushiqea.json"
-                        trigger="hover"
-                        colors="primary:#ffffff,secondary:#ffffff"
-                        class="w-6 h-6 md:w-8 md:h-8">
-                    </lord-icon>
-                </a>
+                <?php session_start(); ?>
+                <div class="relative group" id="userDropdown">
+                    <button id="userIcon" class="flex items-center focus:outline-none">
+                        <lord-icon
+                            src="https://cdn.lordicon.com/bushiqea.json"
+                            trigger="hover"
+                            colors="primary:#ffffff,secondary:#ffffff"
+                            class="w-6 h-6 md:w-8 md:h-8">
+                        </lord-icon>
+                    </button>
+
+                    <!-- Dropdown -->
+                    <div id="dropdownMenu"
+                        class="absolute right-0 mt-3 w-56 bg-[#001f54] text-white rounded-xl shadow-lg border border-white/10 opacity-0 scale-95
+               transition duration-300 ease-in-out pointer-events-none group-hover:opacity-100 group-hover:scale-100 group-hover:pointer-events-auto">
+
+                        <!-- Arrow (segitiga kecil di atas) -->
+                        <div class="absolute -top-2 right-6 w-4 h-4 bg-[#001f54] rotate-45 border-t border-l border-white/10"></div>
+
+                        <div class="p-3 flex items-center space-x-3 border-b border-white/10">
+                            <!-- Avatar bulat dummy -->
+                            <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                                <i class="bi bi-person-fill text-white text-xl"></i>
+                            </div>
+
+                            <!-- Nama user -->
+                            <div class="flex flex-col">
+                                <?php if (isset($_SESSION['username'])): ?>
+                                    <span class="font-semibold"><?= htmlspecialchars($_SESSION['username']) ?></span>
+                                    <span class="text-xs text-gray-300">Online</span>
+                                <?php else: ?>
+                                    <span class="font-semibold text-gray-200">Belum Login</span>
+                                    <span class="text-xs text-gray-400">Guest</span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+
+                        <!-- Tombol Login/Logout -->
+                        <div class="p-3">
+                            <?php if (isset($_SESSION['username'])): ?>
+                                <a href="pages/logout.php"
+                                    class="block w-full text-center py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 font-semibold transition">
+                                    Logout
+                                </a>
+                            <?php else: ?>
+                                <a href="pages/login.php"
+                                    class="block w-full text-center py-2 bg-indigo-600 rounded-lg hover:bg-indigo-700 font-semibold transition">
+                                    Login
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- DISPLAY DEKSTOP END  -->
         </div>
@@ -270,9 +315,9 @@ include 'includes/header.php';
 </div>
 <!-- ABOUT END-->
 <!-- FOOTER START -->
- <div class="py-5 px-6">
+<div class="py-5 px-6">
     <p class="text-center text-indigo-600 font-bold">© 2025 LP3I CIREBON. All Rights Reserved.</p>
- </div>
+</div>
 <!-- FOOTER END -->
 
 
