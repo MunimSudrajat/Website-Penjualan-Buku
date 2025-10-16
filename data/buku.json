@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "judul": "Belajar SQL dari Nol",
+    "judul": "Belajar cepat database noSQL",
     "penulis": "Muhammad Arif",
     "kategori": "Teknologi",
     "harga": 68000,
@@ -46,7 +46,7 @@
   },
   {
     "id": 6,
-    "judul": "Membangun Bisnis Digital",
+    "judul": "Bisnis Digital",
     "penulis": "Dian Pratiwi",
     "kategori": "Bisnis",
     "harga": 97000,
@@ -64,7 +64,7 @@
   },
   {
     "id": 8,
-    "judul": "Manajemen Waktu Efektif",
+    "judul": "Seni Mengelola Waktu",
     "penulis": "Lina Marlina",
     "kategori": "Pengembangan Diri",
     "harga": 65000,
@@ -73,7 +73,7 @@
   },
   {
     "id": 9,
-    "judul": "Psikologi Positif dan Motivasi Hidup",
+    "judul": "Psikologi Positif",
     "penulis": "Bayu Saputra",
     "kategori": "Pengembangan Diri",
     "harga": 72000,
@@ -82,7 +82,7 @@
   },
   {
     "id": 10,
-    "judul": "Rahasia Keuangan Pribadi",
+    "judul": "Mengelola Keuangan Pribadi",
     "penulis": "Nadia Kusuma",
     "kategori": "Ekonomi",
     "harga": 79000,
@@ -100,7 +100,7 @@
   },
   {
     "id": 12,
-    "judul": "Rahasia Dapur Nusantara",
+    "judul": "Rahasia Dapur Warung",
     "penulis": "Sri Rahayu",
     "kategori": "Hobi & Gaya Hidup",
     "harga": 64000,
@@ -109,7 +109,7 @@
   },
   {
     "id": 13,
-    "judul": "Panduan Fotografi Digital",
+    "judul": "Panduan Belajar Fotografi Digital",
     "penulis": "Kevin Halim",
     "kategori": "Hobi & Gaya Hidup",
     "harga": 93000,
@@ -127,7 +127,7 @@
   },
   {
     "id": 15,
-    "judul": "Langit di Atas Kota",
+    "judul": "Langit Senja",
     "penulis": "Dimas Pratama",
     "kategori": "Novel",
     "harga": 70000,
@@ -145,7 +145,7 @@
   },
   {
     "id": 17,
-    "judul": "Ensiklopedia Mini Hewan Dunia",
+    "judul": "Ensiklopedia Hewan Indonesia",
     "penulis": "Wahyu Prabowo",
     "kategori": "Anak & Remaja",
     "harga": 69000,
@@ -154,7 +154,7 @@
   },
   {
     "id": 18,
-    "judul": "Tafsir Ayat Kehidupan",
+    "judul": "Tafsir Inspiratif",
     "penulis": "Ustadz Ahmad Fauzan",
     "kategori": "Agama",
     "harga": 87000,
@@ -163,7 +163,7 @@
   },
   {
     "id": 19,
-    "judul": "Renungan Harian untuk Jiwa Tenang",
+    "judul": "Untuk Jiwa Yang Tenang",
     "penulis": "Pdt. Daniel Hartono",
     "kategori": "Agama",
     "harga": 76000,
@@ -172,7 +172,7 @@
   },
   {
     "id": 20,
-    "judul": "Fisika untuk Kehidupan Sehari-hari",
+    "judul": "Dasar-Dasar Fisika",
     "penulis": "Dr. Yuniarti S.",
     "kategori": "Sains",
     "harga": 89000,
@@ -181,7 +181,7 @@
   },
   {
     "id": 21,
-    "judul": "Pengantar Filsafat Modern",
+    "judul": "Pengantar Filsafat Islam",
     "penulis": "Dr. Bambang Hidayat",
     "kategori": "Filsafat",
     "harga": 95000,
@@ -190,7 +190,7 @@
   },
   {
     "id": 22,
-    "judul": "Politik dan Demokrasi di Indonesia",
+    "judul": "Dinamika Politik dan Demokrasi di Indonesia",
     "penulis": "Rina Suryani",
     "kategori": "Politik",
     "harga": 82000,
@@ -208,7 +208,7 @@
   },
   {
     "id": 24,
-    "judul": "Bahasa Inggris untuk Mahasiswa",
+    "judul": "Bahasa Inggris untuk Mahasiswa Pendidikan Matematika",
     "penulis": "Nur Aisyah",
     "kategori": "Pendidikan",
     "harga": 67000,
@@ -226,7 +226,7 @@
   },
   {
     "id": 26,
-    "judul": "Panduan Desain Grafis dengan Canva",
+    "judul": "Desain Grafis dengan Canva",
     "penulis": "Rafi Pratama",
     "kategori": "Desain",
     "harga": 72000,
@@ -235,7 +235,7 @@
   },
   {
     "id": 27,
-    "judul": "Komik Petualangan Si Kibo",
+    "judul": "Komik Petualangan Si Juki",
     "penulis": "Eko Wibowo",
     "kategori": "Komik",
     "harga": 56000,
@@ -262,7 +262,7 @@
   },
   {
     "id": 30,
-    "judul": "Sejarah Dunia Modern",
+    "judul": "Sejarah Dunia Yang Di Sembunyikan",
     "penulis": "Dr. Naufal Idris",
     "kategori": "Sejarah",
     "harga": 93000,
@@ -271,7 +271,7 @@
   },
   {
     "id": 31,
-    "judul": "Matematika Dasar untuk Kuliah",
+    "judul": "Matematika Dasar untuk Perguruan Tinggi",
     "penulis": "Fitriani Hasan",
     "kategori": "Pendidikan",
     "harga": 74000,
@@ -280,7 +280,7 @@
   },
   {
     "id": 32,
-    "judul": "Belajar Python untuk Data Science",
+    "judul": "Mahir Data Science Dengan Python",
     "penulis": "Randy Kusnadi",
     "kategori": "Teknologi",
     "harga": 99000,
@@ -289,7 +289,7 @@
   },
   {
     "id": 33,
-    "judul": "Fotografi Mobile Profesional",
+    "judul": "Teknik Fotografi",
     "penulis": "Aldo Siregar",
     "kategori": "Hobi & Gaya Hidup",
     "harga": 76000,
@@ -307,7 +307,7 @@
   },
   {
     "id": 35,
-    "judul": "Kisah Inspiratif Para Pemimpin Dunia",
+    "judul": "Kisah Pemimpin Dunia",
     "penulis": "Hendra Santoso",
     "kategori": "Biografi",
     "harga": 88000,
@@ -316,7 +316,7 @@
   },
   {
     "id": 36,
-    "judul": "Strategi Belajar Efektif",
+    "judul": "Strategi Pembelajaran",
     "penulis": "Yuli Setiawan",
     "kategori": "Pendidikan",
     "harga": 67000,
@@ -325,7 +325,7 @@
   },
   {
     "id": 37,
-    "judul": "Belajar Arduino dari Nol",
+    "judul": "Aplikasi Arduino Dan Sensor",
     "penulis": "Eka Nugraha",
     "kategori": "Teknologi",
     "harga": 91000,
@@ -370,7 +370,7 @@
   },
   {
     "id": 42,
-    "judul": "Psikologi Remaja Modern",
+    "judul": "Psikologi Perkembangan Anak & Remaja",
     "penulis": "Nadia Puspita",
     "harga": 69000,
     "kategori": "Psikologi",
@@ -397,7 +397,7 @@
   },
   {
     "id": 45,
-    "judul": "Desain Grafis dengan Canva",
+    "judul": "Kreator Mahir Bisnis",
     "penulis": "Rina Kurniawati",
     "harga": 72000,
     "kategori": "Hobi & Gaya Hidup",
@@ -424,7 +424,7 @@
   },
   {
     "id": 48,
-    "judul": "Tafsir Juz Amma untuk Pemula",
+    "judul": "Tafsir Juz Amma",
     "penulis": "KH. Ahmad Zuhri",
     "harga": 58000,
     "kategori": "Agama & Spiritual",
@@ -442,7 +442,7 @@
   },
   {
     "id": 50,
-    "judul": "Petualangan Si Kucing Milo",
+    "judul": "Milo And Otis",
     "penulis": "Adib Fadhlil",
     "harga": 54000,
     "kategori": "Anak & Remaja",
