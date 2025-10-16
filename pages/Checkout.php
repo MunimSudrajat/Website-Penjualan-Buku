@@ -1,6 +1,20 @@
 <?php
 session_start();
 
+// Jika menerima data JSON dari fetch (localStorage)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && strpos($_SERVER['CONTENT_TYPE'], 'application/json') !== false) {
+    $data = json_decode(file_get_contents('php://input'), true);
+
+    if (isset($data['cart'])) {
+        $_SESSION['cart'] = $data['cart']; // Simpan ke session
+
+        echo json_encode(['success' => true]);
+        exit;
+    } else {
+        echo json_encode(['success' => false]);
+        exit;
+    }
+}
 // Jika tombol "Tambahkan ke Keranjang" ditekan
 if (isset($_POST['add_to_cart'])) {
     $item = [
@@ -38,70 +52,13 @@ if (isset($_SESSION['cart'])) {
     <title>Checkout - BOOKStore</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
+    <link rel="stylesheet" href="../assets/css/footer.css">
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="../index.php">
-            <svg class="bi bi-book-fill me-2" fill="currentColor" height="24" viewBox="0 0 16 16" width="24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z">
-                </path>
-            </svg>
-            BOOKStore
-        </a>
+ <?php include '../includes/navbar.php'; ?>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Katalog</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Pesanan</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Favorit</a></li>
-            </ul>
-
-            <!-- Search Bar -->
-            <form class="d-flex me-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Cari buku..." aria-label="Search">
-                <button class="btn btn-outline-dark" type="submit">
-                    <i class="bi bi-search"></i>
-                </button>
-            </form>
-
-            <!-- Icon Keranjang dan User -->
-            <div class="d-flex align-items-center gap-2">
-                <!-- Icon Keranjang -->
-                <a href="checkout.php" class="btn btn-outline-dark position-relative">
-                    <i class="bi bi-cart3"></i>
-                    <span
-                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger small">2</span>
-                </a>
-
-                <!-- Dropdown User -->
-                <div class="dropdown">
-                    <button class="btn btn-link text-dark text-decoration-none dropdown-toggle" type="button"
-                        id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="bi bi-person-circle fs-5"></i>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-                        <li><a class="dropdown-item" href="#">Profil</a></li>
-                        <li><a class="dropdown-item" href="#">Pengaturan</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</nav>
 
 <div class="container my-5">
     <h2 class="fw-bold mb-4">🛍️ Checkout</h2>
@@ -175,7 +132,12 @@ if (isset($_SESSION['cart'])) {
         </div>
     <?php endif; ?>
 </div>
+<?php include '../Includes/footer.php'; ?>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="../assets/js/modalCheckout.js"></script>
+
 </body>
 </html>
