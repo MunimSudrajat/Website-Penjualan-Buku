@@ -120,7 +120,7 @@ if (!$bukuTerpilih) {
   <div class="container">
     <div class="book-detail row align-items-center">
       <div class="col-md-4 mb-3 mb-md-0">
-        <img src="../<?= htmlspecialchars($bukuTerpilih['gambar']) ?>" alt="<?= htmlspecialchars($bukuTerpilih['judul']) ?>" class="book-image">
+        <img src="<?= htmlspecialchars($bukuTerpilih['gambar']) ?>" alt="<?= htmlspecialchars($bukuTerpilih['judul']) ?>" class="book-image">
       </div>
       <div class="col-md-8">
         <h2 class="book-title"><?= htmlspecialchars($bukuTerpilih['judul']) ?></h2>
@@ -137,7 +137,7 @@ if (!$bukuTerpilih) {
         <hr>
         <h5>Deskripsi:</h5>
         <p><?= htmlspecialchars($bukuTerpilih['deskripsi']) ?></p>
-        <button class="btn btn-primary mt-3">Beli Sekarang</button>
+        <button class="btn btn-primary mt-3" onclick="window.location.href='Checkout.php'">Beli Sekarang</button>
       </div>
     </div>
   </div>

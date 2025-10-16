@@ -2,25 +2,451 @@
   {
     "id": 1,
     "judul": "Pemrograman Dasar C++",
-    "penulis": "Aris Armunanto,S.e.,A.k.,Mm",
+    "penulis": "Adib Fadhlil",
+    "kategori": "Teknologi",
     "harga": 75000,
-    "gambar": "../assets/img/assets/img/2k6cjwpghl675m9qzvyyp5.jpg",
-    "deskripsi": "Buku ini membahas dasar-dasar pemrograman C++ untuk pemula."
+    "gambar": "../assets/img/buku1.jpg",
+    "deskripsi": "Buku ini membahas dasar-dasar pemrograman C++ secara terstruktur untuk pemula yang ingin memahami logika dan sintaks bahasa pemrograman."
   },
   {
     "id": 2,
     "judul": "Belajar SQL dari Nol",
     "penulis": "Muhammad Arif",
+    "kategori": "Teknologi",
     "harga": 68000,
-    "gambar": "../assets/img/assets/img/assets/img/6a378f02-8798-485e-b7d9-874d6aa78762.jpg",
-    "deskripsi": "Panduan lengkap belajar SQL dengan perbandingan terhadap bahasa C++."
+    "gambar": "../assets/img/buku2.jpg",
+    "deskripsi": "Panduan lengkap belajar SQL dari dasar hingga mahir dengan pendekatan praktis serta perbandingan terhadap bahasa C++."
   },
   {
     "id": 3,
     "judul": "Teknologi Internet of Things (IoT)",
     "penulis": "Siti Rahma",
+    "kategori": "Teknologi",
     "harga": 82000,
-    "gambar": "../assets/img/assets/img/assets/img/6uvrurklaulrsxsavgv7yk.jpg",
-    "deskripsi": "Pengenalan konsep dan implementasi IoT dengan ESP32 dan sensor."
+    "gambar": "../assets/img/buku3.jpg",
+    "deskripsi": "Pengenalan konsep Internet of Things (IoT) beserta contoh implementasi menggunakan mikrokontroler ESP32 dan sensor digital."
+  },
+  {
+    "id": 4,
+    "judul": "Kecerdasan Buatan untuk Pemula",
+    "penulis": "Ahmad Fauzi",
+    "kategori": "Teknologi",
+    "harga": 90000,
+    "gambar": "../assets/img/buku4.jpg",
+    "deskripsi": "Buku ini memperkenalkan konsep dasar Artificial Intelligence (AI) dan Machine Learning beserta contoh penerapannya di dunia nyata."
+  },
+  {
+    "id": 5,
+    "judul": "Dasar-Dasar Jaringan Komputer",
+    "penulis": "Rizky Maulana",
+    "kategori": "Teknologi",
+    "harga": 78000,
+    "gambar": "../assets/img/buku5.jpg",
+    "deskripsi": "Membahas konsep dasar jaringan komputer, protokol komunikasi, serta praktik membangun jaringan lokal dan internet."
+  },
+  {
+    "id": 6,
+    "judul": "Membangun Bisnis Digital",
+    "penulis": "Dian Pratiwi",
+    "kategori": "Bisnis",
+    "harga": 97000,
+    "gambar": "../assets/img/buku6.jpg",
+    "deskripsi": "Panduan praktis membangun bisnis berbasis digital, mulai dari riset pasar, branding, hingga strategi pemasaran online."
+  },
+  {
+    "id": 7,
+    "judul": "Kewirausahaan Modern",
+    "penulis": "Hendri Gunawan",
+    "kategori": "Bisnis",
+    "harga": 88000,
+    "gambar": "../assets/img/buku7.jpg",
+    "deskripsi": "Buku motivasi dan panduan praktis untuk menjadi wirausaha sukses di era digital dengan mindset inovatif dan kreatif."
+  },
+  {
+    "id": 8,
+    "judul": "Manajemen Waktu Efektif",
+    "penulis": "Lina Marlina",
+    "kategori": "Pengembangan Diri",
+    "harga": 65000,
+    "gambar": "../assets/img/buku8.jpg",
+    "deskripsi": "Panduan lengkap mengatur waktu secara efisien agar produktivitas meningkat tanpa mengorbankan keseimbangan hidup."
+  },
+  {
+    "id": 9,
+    "judul": "Psikologi Positif dan Motivasi Hidup",
+    "penulis": "Bayu Saputra",
+    "kategori": "Pengembangan Diri",
+    "harga": 72000,
+    "gambar": "../assets/img/buku9.jpg",
+    "deskripsi": "Buku ini membahas bagaimana cara berpikir positif, mengenali potensi diri, dan membangun kebahagiaan dalam kehidupan."
+  },
+  {
+    "id": 10,
+    "judul": "Rahasia Keuangan Pribadi",
+    "penulis": "Nadia Kusuma",
+    "kategori": "Ekonomi",
+    "harga": 79000,
+    "gambar": "../assets/img/buku10.jpg",
+    "deskripsi": "Pelajari cara mengatur keuangan pribadi dengan bijak, menabung, berinvestasi, dan mencapai kebebasan finansial."
+  },
+  {
+    "id": 11,
+    "judul": "Investasi Saham untuk Pemula",
+    "penulis": "Andi Prakoso",
+    "kategori": "Ekonomi",
+    "harga": 86000,
+    "gambar": "../assets/img/buku11.jpg",
+    "deskripsi": "Panduan mudah memahami dunia saham, analisis pasar, dan strategi investasi jangka panjang untuk pemula."
+  },
+  {
+    "id": 12,
+    "judul": "Rahasia Dapur Nusantara",
+    "penulis": "Sri Rahayu",
+    "kategori": "Hobi & Gaya Hidup",
+    "harga": 64000,
+    "gambar": "../assets/img/buku12.jpg",
+    "deskripsi": "Kumpulan resep masakan tradisional dari berbagai daerah di Indonesia dengan langkah-langkah yang mudah diikuti."
+  },
+  {
+    "id": 13,
+    "judul": "Panduan Fotografi Digital",
+    "penulis": "Kevin Halim",
+    "kategori": "Hobi & Gaya Hidup",
+    "harga": 93000,
+    "gambar": "../assets/img/buku13.jpg",
+    "deskripsi": "Teknik dasar hingga lanjutan fotografi digital menggunakan kamera DSLR dan smartphone."
+  },
+  {
+    "id": 14,
+    "judul": "Petualangan di Negeri Awan",
+    "penulis": "Rani Febriani",
+    "kategori": "Novel",
+    "harga": 68000,
+    "gambar": "../assets/img/buku14.jpg",
+    "deskripsi": "Novel fantasi yang menceritakan petualangan seorang remaja di dunia ajaib penuh misteri dan makhluk menakjubkan."
+  },
+  {
+    "id": 15,
+    "judul": "Langit di Atas Kota",
+    "penulis": "Dimas Pratama",
+    "kategori": "Novel",
+    "harga": 70000,
+    "gambar": "../assets/img/buku15.jpg",
+    "deskripsi": "Kisah romansa dan perjuangan hidup dua insan muda yang bertemu di tengah kerasnya kehidupan kota besar."
+  },
+  {
+    "id": 16,
+    "judul": "Dongeng Sebelum Tidur",
+    "penulis": "Nur Lestari",
+    "kategori": "Anak & Remaja",
+    "harga": 58000,
+    "gambar": "../assets/img/buku16.jpg",
+    "deskripsi": "Kumpulan dongeng dan cerita pendek penuh pesan moral yang cocok dibacakan sebelum tidur untuk anak-anak."
+  },
+  {
+    "id": 17,
+    "judul": "Ensiklopedia Mini Hewan Dunia",
+    "penulis": "Wahyu Prabowo",
+    "kategori": "Anak & Remaja",
+    "harga": 69000,
+    "gambar": "../assets/img/buku17.jpg",
+    "deskripsi": "Buku bergambar berisi fakta menarik tentang berbagai hewan di seluruh dunia untuk anak usia dini."
+  },
+  {
+    "id": 18,
+    "judul": "Tafsir Ayat Kehidupan",
+    "penulis": "Ustadz Ahmad Fauzan",
+    "kategori": "Agama",
+    "harga": 87000,
+    "gambar": "../assets/img/buku18.jpg",
+    "deskripsi": "Kumpulan tafsir dan penjelasan ayat-ayat Al-Qur’an yang relevan dengan kehidupan sehari-hari."
+  },
+  {
+    "id": 19,
+    "judul": "Renungan Harian untuk Jiwa Tenang",
+    "penulis": "Pdt. Daniel Hartono",
+    "kategori": "Agama",
+    "harga": 76000,
+    "gambar": "../assets/img/buku19.jpg",
+    "deskripsi": "Buku rohani yang berisi kumpulan renungan harian untuk menumbuhkan kedamaian batin dan hubungan spiritual."
+  },
+  {
+    "id": 20,
+    "judul": "Fisika untuk Kehidupan Sehari-hari",
+    "penulis": "Dr. Yuniarti S.",
+    "kategori": "Sains",
+    "harga": 89000,
+    "gambar": "../assets/img/buku20.jpg",
+    "deskripsi": "Menjelaskan konsep dasar fisika dengan cara yang sederhana dan aplikatif dalam kehidupan sehari-hari."
+  },
+  {
+    "id": 21,
+    "judul": "Pengantar Filsafat Modern",
+    "penulis": "Dr. Bambang Hidayat",
+    "kategori": "Filsafat",
+    "harga": 95000,
+    "gambar": "../assets/img/buku21.jpg",
+    "deskripsi": "Membahas pemikiran para filsuf besar dari masa klasik hingga modern secara sistematis dan mudah dipahami."
+  },
+  {
+    "id": 22,
+    "judul": "Politik dan Demokrasi di Indonesia",
+    "penulis": "Rina Suryani",
+    "kategori": "Politik",
+    "harga": 82000,
+    "gambar": "../assets/img/buku22.jpg",
+    "deskripsi": "Analisis mendalam tentang perkembangan politik dan demokrasi di Indonesia pasca reformasi."
+  },
+  {
+    "id": 23,
+    "judul": "Psikologi Remaja",
+    "penulis": "Dr. Anisa Putri",
+    "kategori": "Psikologi",
+    "harga": 75000,
+    "gambar": "../assets/img/buku23.jpg",
+    "deskripsi": "Pembahasan lengkap tentang perkembangan psikologis, emosi, dan sosial remaja dalam kehidupan modern."
+  },
+  {
+    "id": 24,
+    "judul": "Bahasa Inggris untuk Mahasiswa",
+    "penulis": "Nur Aisyah",
+    "kategori": "Pendidikan",
+    "harga": 67000,
+    "gambar": "../assets/img/buku24.jpg",
+    "deskripsi": "Buku pembelajaran bahasa Inggris dengan fokus pada komunikasi akademik dan profesional."
+  },
+  {
+    "id": 25,
+    "judul": "Metode Penelitian Ilmiah",
+    "penulis": "Dr. Wahyu Gunawan",
+    "kategori": "Pendidikan",
+    "harga": 90000,
+    "gambar": "../assets/img/buku25.jpg",
+    "deskripsi": "Panduan lengkap dalam merancang penelitian ilmiah, pengumpulan data, dan analisis hasil."
+  },
+  {
+    "id": 26,
+    "judul": "Panduan Desain Grafis dengan Canva",
+    "penulis": "Rafi Pratama",
+    "kategori": "Desain",
+    "harga": 72000,
+    "gambar": "../assets/img/buku26.jpg",
+    "deskripsi": "Langkah-langkah membuat desain grafis menarik menggunakan Canva untuk kebutuhan bisnis dan media sosial."
+  },
+  {
+    "id": 27,
+    "judul": "Komik Petualangan Si Kibo",
+    "penulis": "Eko Wibowo",
+    "kategori": "Komik",
+    "harga": 56000,
+    "gambar": "../assets/img/buku27.jpg",
+    "deskripsi": "Komik lucu tentang petualangan seekor kucing bernama Kibo yang suka membantu teman-temannya."
+  },
+  {
+    "id": 28,
+    "judul": "One Day with You",
+    "penulis": "Tania Amelia",
+    "kategori": "Romance",
+    "harga": 69000,
+    "gambar": "../assets/img/buku28.jpg",
+    "deskripsi": "Novel romantis yang menceritakan kisah cinta antara dua orang asing yang bertemu di perjalanan singkat."
+  },
+  {
+    "id": 29,
+    "judul": "Belajar Bahasa Jepang Praktis",
+    "penulis": "Kenji Takahashi",
+    "kategori": "Bahasa",
+    "harga": 85000,
+    "gambar": "../assets/img/buku29.jpg",
+    "deskripsi": "Panduan belajar bahasa Jepang dasar dengan ilustrasi, percakapan sehari-hari, dan latihan membaca hiragana."
+  },
+  {
+    "id": 30,
+    "judul": "Sejarah Dunia Modern",
+    "penulis": "Dr. Naufal Idris",
+    "kategori": "Sejarah",
+    "harga": 93000,
+    "gambar": "../assets/img/buku30.jpg",
+    "deskripsi": "Mengulas perjalanan sejarah dunia mulai dari revolusi industri hingga era globalisasi modern."
+  },
+  {
+    "id": 31,
+    "judul": "Matematika Dasar untuk Kuliah",
+    "penulis": "Fitriani Hasan",
+    "kategori": "Pendidikan",
+    "harga": 74000,
+    "gambar": "../assets/img/buku31.jpg",
+    "deskripsi": "Membahas konsep matematika dasar yang sering digunakan dalam perkuliahan teknik dan sains."
+  },
+  {
+    "id": 32,
+    "judul": "Belajar Python untuk Data Science",
+    "penulis": "Randy Kusnadi",
+    "kategori": "Teknologi",
+    "harga": 99000,
+    "gambar": "../assets/img/buku32.jpg",
+    "deskripsi": "Panduan belajar Python untuk pemrosesan data, analisis statistik, dan penerapan machine learning."
+  },
+  {
+    "id": 33,
+    "judul": "Fotografi Mobile Profesional",
+    "penulis": "Aldo Siregar",
+    "kategori": "Hobi & Gaya Hidup",
+    "harga": 76000,
+    "gambar": "../assets/img/buku33.jpg",
+    "deskripsi": "Rahasia menghasilkan foto profesional hanya dengan kamera smartphone."
+  },
+  {
+    "id": 34,
+    "judul": "Psikologi Kepribadian",
+    "penulis": "Dr. Vina Marlina",
+    "kategori": "Psikologi",
+    "harga": 85000,
+    "gambar": "../assets/img/buku34.jpg",
+    "deskripsi": "Pembahasan mendalam mengenai teori-teori kepribadian dan cara memahami karakter diri."
+  },
+  {
+    "id": 35,
+    "judul": "Kisah Inspiratif Para Pemimpin Dunia",
+    "penulis": "Hendra Santoso",
+    "kategori": "Biografi",
+    "harga": 88000,
+    "gambar": "../assets/img/buku35.jpg",
+    "deskripsi": "Kumpulan kisah inspiratif dari para tokoh dunia yang mengubah sejarah dengan kepemimpinannya."
+  },
+  {
+    "id": 36,
+    "judul": "Strategi Belajar Efektif",
+    "penulis": "Yuli Setiawan",
+    "kategori": "Pendidikan",
+    "harga": 67000,
+    "gambar": "../assets/img/buku36.jpg",
+    "deskripsi": "Teknik dan strategi agar belajar menjadi lebih mudah, cepat, dan menyenangkan untuk pelajar."
+  },
+  {
+    "id": 37,
+    "judul": "Belajar Arduino dari Nol",
+    "penulis": "Eka Nugraha",
+    "kategori": "Teknologi",
+    "harga": 91000,
+    "gambar": "../assets/img/buku37.jpg",
+    "deskripsi": "Panduan praktis belajar mikrokontroler Arduino untuk membuat berbagai proyek elektronik."
+  },
+  {
+    "id": 38,
+    "judul": "Kamus Lengkap Bahasa Inggris",
+    "penulis": "Budi Setyawan",
+    "kategori": "Bahasa",
+    "harga": 85000,
+    "gambar": "../assets/img/buku38.jpg",
+    "deskripsi": "Kamus lengkap dua arah Inggris–Indonesia dan Indonesia–Inggris dengan ribuan kosakata terbaru."
+  },
+  {
+    "id": 39,
+    "judul": "Komik Sejarah Dunia",
+    "penulis": "Riko Hamzah",
+    "kategori": "Komik",
+    "harga": 60000,
+    "gambar": "../assets/img/buku39.jpg",
+    "deskripsi": "Komik edukatif yang menjelaskan peristiwa sejarah dunia dengan gaya ilustrasi menarik."
+  },
+  {
+    "id": 40,
+    "judul": "Analisis Sistem Informasi",
+    "penulis": "Suryadi Kusuma",
+    "harga": 88000,
+    "kategori": "Teknologi Informasi",
+    "gambar": "../assets/img/buku40.jpg",
+    "deskripsi": "Membahas metode analisis dan perancangan sistem informasi modern."
+  },
+  {
+    "id": 41,
+    "judul": "Kewirausahaan untuk Mahasiswa",
+    "penulis": "Taufik Hidayat",
+    "harga": 73000,
+    "kategori": "Bisnis & Ekonomi",
+    "gambar": "../assets/img/buku41.jpg",
+    "deskripsi": "Panduan membangun jiwa wirausaha di kalangan mahasiswa dan generasi muda."
+  },
+  {
+    "id": 42,
+    "judul": "Psikologi Remaja Modern",
+    "penulis": "Nadia Puspita",
+    "harga": 69000,
+    "kategori": "Psikologi",
+    "gambar": "../assets/img/buku42.jpg",
+    "deskripsi": "Membahas perilaku, emosi, dan perkembangan psikologis remaja masa kini."
+  },
+  {
+    "id": 43,
+    "judul": "Belajar Artificial Intelligence",
+    "penulis": "Bagus Pratama",
+    "harga": 99000,
+    "kategori": "Teknologi",
+    "gambar": "../assets/img/buku43.jpg",
+    "deskripsi": "Pengenalan kecerdasan buatan dan penerapannya dalam dunia nyata."
+  },
+  {
+    "id": 44,
+    "judul": "Kumpulan Cerita Inspiratif",
+    "penulis": "Maya Anggraini",
+    "harga": 56000,
+    "kategori": "Pengembangan Diri",
+    "gambar": "../assets/img/buku44.jpg",
+    "deskripsi": "Cerita-cerita singkat yang mengandung makna dan motivasi kehidupan."
+  },
+  {
+    "id": 45,
+    "judul": "Desain Grafis dengan Canva",
+    "penulis": "Rina Kurniawati",
+    "harga": 72000,
+    "kategori": "Hobi & Gaya Hidup",
+    "gambar": "../assets/img/buku45.jpg",
+    "deskripsi": "Panduan membuat desain visual profesional menggunakan Canva."
+  },
+  {
+    "id": 46,
+    "judul": "Menjadi Pemimpin Hebat",
+    "penulis": "Agus Setiawan",
+    "harga": 85000,
+    "kategori": "Pengembangan Diri",
+    "gambar": "../assets/img/buku46.jpg",
+    "deskripsi": "Buku inspiratif yang membahas seni kepemimpinan di era digital."
+  },
+  {
+    "id": 47,
+    "judul": "Dongeng Anak Dunia",
+    "penulis": "Sari Widya",
+    "harga": 49000,
+    "kategori": "Anak & Remaja",
+    "gambar": "../assets/img/buku47.jpg",
+    "deskripsi": "Kumpulan dongeng-dongeng terkenal dari berbagai negara untuk anak-anak."
+  },
+  {
+    "id": 48,
+    "judul": "Tafsir Juz Amma untuk Pemula",
+    "penulis": "KH. Ahmad Zuhri",
+    "harga": 58000,
+    "kategori": "Agama & Spiritual",
+    "gambar": "../assets/img/buku48.jpg",
+    "deskripsi": "Penjelasan makna ayat-ayat pendek dalam Al-Qur'an dengan bahasa sederhana."
+  },
+  {
+    "id": 49,
+    "judul": "Fotografi Digital Praktis",
+    "penulis": "Eko Prayoga",
+    "harga": 76000,
+    "kategori": "Hobi & Gaya Hidup",
+    "gambar": "../assets/img/buku49.jpg",
+    "deskripsi": "Panduan memotret dan mengedit foto digital untuk hasil profesional."
+  },
+  {
+    "id": 50,
+    "judul": "Petualangan Si Kucing Milo",
+    "penulis": "Adib Fadhlil",
+    "harga": 54000,
+    "kategori": "Anak & Remaja",
+    "gambar": "../assets/img/buku50.jpg",
+    "deskripsi": "Kisah lucu dan menggemaskan tentang petualangan seekor kucing bernama Milo."
   }
 ]
