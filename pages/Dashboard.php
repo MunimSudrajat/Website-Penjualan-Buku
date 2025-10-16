@@ -7,41 +7,30 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-// array data buku (contoh dummy)
-$books = [
-    [
-        "id" => 1,
-        "title" => "Belajar PHP untuk Pemula",
-        "author" => "Fajar Rahman",
-        "price" => 85000,
-        "image" => "https://image.gramedia.net/rs:fit:0:0/plain/https://cdn.gramedia.com/uploads/product-metas/gprexnl69l.jpg",
-        "description" => "Panduan lengkap belajar bahasa pemrograman PHP dari dasar hingga mahir."
-    ],
-    [
-        "id" => 2,
-        "title" => "Algoritma dan Pemrograman",
-        "author" => "Rina Santoso",
-        "price" => 99000,
-        "image" => "https://cdn.gramedia.com/uploads/items/9786021514917_algoritma-dan-pemrograman-dalam-bahasa-pascal_-c_-dan-c_-edisi-keenam.jpg",
-        "description" => "Pelajari logika dan algoritma pemrograman secara sistematis dan mudah dipahami."
-    ],
-    [
-        "id" => 3,
-        "title" => "Desain Web Modern",
-        "author" => "Andi Kurniawan",
-        "price" => 125000,
-        "image" => "https://ebooks.gramedia.com/ebook-covers/30922/big_covers/GRAMEDIANA98280_B.jpg",
-        "description" => "Buku ini membahas HTML, CSS, dan Bootstrap untuk membangun website modern."
-    ],
-    [
-        "id" => 4,
-        "title" => "Artificial Intelligence Dasar",
-        "author" => "Siti Handayani",
-        "price" => 150000,
-        "image" => "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRq7teMiC5QVizL9GibX3weTRIVSsTj-EVdQA&s",
-        "description" => "Pengenalan konsep dasar kecerdasan buatan dan penerapannya di dunia nyata."
-    ]
-];
+// Ambil data buku dari JSON
+$dataFile = '../data/buku.json';
+$books = [];
+
+if (file_exists($dataFile)) {
+    $jsonData = file_get_contents($dataFile);
+    $books = json_decode($jsonData, true);
+}
+
+// --- Pagination setup ---
+$perPage = 10; // jumlah buku per halaman
+$totalBooks = count($books);
+$totalPages = ceil($totalBooks / $perPage);
+
+// Halaman saat ini
+$currentPage = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+if ($currentPage < 1) $currentPage = 1;
+if ($currentPage > $totalPages) $currentPage = $totalPages;
+
+// Hitung indeks awal data yang ditampilkan
+$startIndex = ($currentPage - 1) * $perPage;
+
+// Ambil subset buku untuk halaman ini
+$booksToShow = array_slice($books, $startIndex, $perPage);
 ?>
 
 <!DOCTYPE html>
@@ -291,6 +280,16 @@ $books = [
             color: #b91c1c;
         }
 
+        .icon-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+        .icon-btn i {
+            font-size: 1.5rem; /* ukuran ikon */
+        }
+
+
         .footer {
             border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
@@ -385,28 +384,75 @@ $books = [
             </div>
         </div>
     </div>
-</nav>
+    </nav>
 
 
     <!-- Main Content -->
-    <div class="container mt-5">
-        <h2 class="mb-4 fw-bold">📚 Daftar Buku</h2>
-        <div class="row">
-            <?php foreach ($books as $book): ?>
+ <div class="container mt-5">
+    <h2 class="mb-4 fw-bold">📚 Daftar Buku</h2>
+    <div class="row">
+        <?php if (!empty($booksToShow)): ?>
+            <?php foreach ($booksToShow as $book): ?>
                 <div class="col-md-3 mb-4">
                     <div class="card shadow-sm h-100">
-                        <img src="../assets/images/<?php echo $book['image']; ?>" class="card-img-top" alt="<?php echo $book['title']; ?>">
+                        <img src="<?php echo $book['gambar']; ?>" class="card-img-top" alt="<?php echo $book['judul']; ?>">
                         <div class="card-body d-flex flex-column">
-                            <h5 class="card-title"><?php echo $book['title']; ?></h5>
-                            <p class="text-muted mb-1"><?php echo $book['author']; ?></p>
-                            <p class="fw-bold mb-2">Rp<?php echo number_format($book['price'], 0, ',', '.'); ?></p>
-                            <a href="detail_buku.php?id=<?php echo $book['id']; ?>" class="btn btn-dark mt-auto">Lihat Detail</a>
+                            <h5 class="card-title"><?php echo $book['judul']; ?></h5>
+                            <p class="text-muted mb-1"><?php echo $book['penulis']; ?></p>
+                            <p class="fw-bold mb-2">Rp<?php echo number_format($book['harga'], 0, ',', '.'); ?></p>
+
+                            <!-- Tombol ikon di bawah -->
+                            <div class="d-flex justify-content-center align-items-center gap-3 mt-auto">
+                                <!-- Tombol detail -->
+                                <a href="detailBuku.php?id=<?php echo $book['id']; ?>" 
+                                   class="btn btn-outline-dark btn-sm d-flex align-items-center justify-content-center icon-btn"
+                                   title="Lihat Detail">
+                                    <i class="bi bi-eye fs-4"></i>
+                                </a>
+
+                                <!-- Tombol tambah ke keranjang -->
+                                <button class="btn btn-dark btn-sm d-flex align-items-center justify-content-center icon-btn" 
+                                        title="Tambah ke Keranjang" 
+                                        onclick="tambahKeKeranjang(<?php echo $book['id']; ?>)">
+                                    <i class="bi bi-cart-plus fs-4"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             <?php endforeach; ?>
-        </div>
+        <?php else: ?>
+            <p>Tidak ada data buku yang tersedia.</p>
+        <?php endif; ?>
     </div>
+
+     <!-- =======================
+         PAGINATION NAVIGATION
+    ======================= -->
+    <?php if ($totalPages > 1): ?>
+        <nav aria-label="Navigasi halaman buku">
+            <ul class="pagination justify-content-center mt-4">
+                <!-- Tombol Sebelumnya -->
+                <li class="page-item <?php if ($currentPage <= 1) echo 'disabled'; ?>">
+                    <a class="page-link" href="?page=<?php echo $currentPage - 1; ?>">← Sebelumnya</a>
+                </li>
+
+                <!-- Nomor Halaman -->
+                <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                    <li class="page-item <?php if ($i == $currentPage) echo 'active'; ?>">
+                        <a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                    </li>
+                <?php endfor; ?>
+
+                <!-- Tombol Berikutnya -->
+                <li class="page-item <?php if ($currentPage >= $totalPages) echo 'disabled'; ?>">
+                    <a class="page-link" href="?page=<?php echo $currentPage + 1; ?>">Berikutnya →</a>
+                </li>
+            </ul>
+        </nav>
+    <?php endif; ?>
+</div>
+
 
     <!-- footer start-->
     <footer class="py-5 footer">
@@ -436,8 +482,19 @@ $books = [
         <p class="text-muted">© 2024 Bookstore. All rights reserved.</p>
         </div>
     </footer>
+
     <!-- footer end -->
+     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    function tambahKeKeranjang(id) {
+        alert("Buku dengan ID " + id + " telah ditambahkan ke keranjang!");
+    }
+
+    function tambahKeKeranjang(id) {
+     alert("Buku dengan ID " + id + " telah ditambahkan ke keranjang!");
+    }
+    </script>
 </body>
 
 </html>
