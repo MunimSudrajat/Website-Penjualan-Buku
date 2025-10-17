@@ -8,5 +8,9 @@ $users = [
     [
         'username' => 'user',
         'password' => 'user123'
+    ],
+    [
+        'username' => 'rizqi',
+        'password' => 'rizqi123'
     ]
 ];

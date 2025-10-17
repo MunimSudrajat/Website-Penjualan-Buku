@@ -160,6 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 opacity: 0;
                 transform: translateY(15px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -181,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
-                <input type="text" class="form-control" id="username" name="username" 
+                <input type="text" class="form-control" id="username" name="username"
                     placeholder="Masukkan username" required>
             </div>
 
@@ -189,7 +190,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password"
                     placeholder="Masukkan password" required>
-                <button type="button" class="toggle-password" id="togglePassword" 
+                <button type="button" class="toggle-password" id="togglePassword"
                     tabindex="-1">
                     <i class="bi bi-eye-slash"></i>
                 </button>
@@ -198,9 +199,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" class="btn btn-login">Login</button>
         </form>
 
-        <div class="login-footer">
+        <!-- <div class="login-footer">
             <a href="../index.php">← Kembali ke Beranda</a>
-        </div>
+        </div> -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -211,7 +212,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         togglePassword.addEventListener('click', () => {
             const isHidden = passwordField.type === 'password';
             passwordField.type = isHidden ? 'text' : 'password';
-            
+
             const icon = togglePassword.querySelector('i');
             icon.classList.toggle('bi-eye');
             icon.classList.toggle('bi-eye-slash');
