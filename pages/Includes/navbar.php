@@ -1,3 +1,16 @@
+  <?php
+    $dataFile = '../data/buku.json';
+    $jsonString = file_get_contents($dataFile);
+    $data = json_decode($jsonString, true);
+    $kategoriList = array_column($data, 'kategori');
+    $kategoriUnik = array_unique($kategoriList);
+    // var_dump($data);
+
+    ?>
+
+
+
+
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light shadow-sm sticky-top">
       <div class="container">
@@ -23,11 +36,10 @@
                       <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Kategori
                       </a>
-                      <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Komik</a></li>
-                          <li><a class="dropdown-item" href="#">Keuangan</a></li>
-                          <li><a class="dropdown-item" href="#">Pendidikan</a></li>
-                          <li><a class="dropdown-item" href="#">Novel</a></li>
+                      <ul class="dropdown-menu" style="max-height: 250px; overflow-y: auto;">
+                        <?php foreach($kategoriUnik as $d): ?>
+                              <li><a class="dropdown-item" href="#"><?= $d; ?></a></li>
+                        <?php endforeach; ?>
                       </ul>
                   </li>
               </ul>
