@@ -10,6 +10,10 @@ $users = [
         'password' => 'user123'
     ],
     [
+        'username' => 'adib',
+        'password' => 'adib123'
+    ],
+    [
         'username' => 'rizqi',
         'password' => 'rizqi123'
     ]
