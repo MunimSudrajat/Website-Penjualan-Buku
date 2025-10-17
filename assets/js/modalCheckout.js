@@ -12,13 +12,14 @@ function tambahKeKeranjang(id) {
     const btn = document.querySelector(`[data-id='${id}']`);
     const title = btn.dataset.title;
     const price = parseInt(btn.dataset.price);
+    const image = btn.dataset.image; // tambahkan ini
 
     // Cek apakah buku sudah ada di keranjang
     const existingItem = cart.find(item => item.id === id);
     if (existingItem) {
         existingItem.quantity++;
     } else {
-        cart.push({ id, title, price, quantity: 1 });
+        cart.push({ id, title, price, image, quantity: 1 }); // simpan image
     }
 
     // Simpan ke localStorage
@@ -27,6 +28,7 @@ function tambahKeKeranjang(id) {
     // Update badge
     updateCartBadge();
 }
+
 
 // Update jumlah di badge navbar
 function updateCartBadge() {
