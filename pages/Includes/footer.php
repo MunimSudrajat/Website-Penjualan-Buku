@@ -25,4 +25,5 @@
         <p class="text-muted">© 2024 Bookstore. All rights reserved.</p>
         </div>
         <?php include 'iklan-popup.php'; ?>
+        <?php include 'music.php'; ?>
     </footer>

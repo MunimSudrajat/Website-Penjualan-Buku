@@ -17,7 +17,7 @@ if (file_exists($dataFile)) {
 }
 
 // --- Pagination setup ---
-$perPage = 10; // jumlah buku per halaman
+$perPage = 8; // jumlah buku per halaman
 $totalBooks = count($books);
 $totalPages = ceil($totalBooks / $perPage);
 
