@@ -39,9 +39,10 @@ if (isset($_POST['add_to_cart'])) {
 $total = 0;
 if (isset($_SESSION['cart'])) {
     foreach ($_SESSION['cart'] as $item) {
-        $total += $item['price'];
+        $total += $item['price'] * $item['quantity'];
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +58,7 @@ if (isset($_SESSION['cart'])) {
 </head>
 <body>
 
- <?php include '../includes/navbar.php'; ?>
+ <?php include './includes/navbar.php'; ?>
 
 
 <div class="container my-5">
@@ -74,17 +75,19 @@ if (isset($_SESSION['cart'])) {
                     <div class="card-header bg-dark text-white">
                         <h5 class="mb-0">Daftar Buku di Keranjang</h5>
                     </div>
-                    <ul class="list-group list-group-flush">
+                   <ul class="list-group list-group-flush">
                         <?php foreach ($_SESSION['cart'] as $item): ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center gap-3">
-                                    <img src="../assets/images/<?php echo $item['image']; ?>" alt="<?php echo $item['title']; ?>" width="50" class="rounded">
+                                    <img src="<?php echo $item['image']; ?>" 
+                                        alt="<?php echo $item['title']; ?>" 
+                                        width="50" class="rounded">
                                     <div>
                                         <strong><?php echo $item['title']; ?></strong><br>
                                         <small>Rp<?php echo number_format($item['price'], 0, ',', '.'); ?></small>
                                     </div>
                                 </div>
-                                <span class="badge bg-secondary">1x</span>
+                                <span class="badge bg-secondary"><?php echo $item['quantity']; ?>x</span>
                             </li>
                         <?php endforeach; ?>
                     </ul>
