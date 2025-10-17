@@ -83,7 +83,7 @@ if (!$bukuTerpilih) {
 <body>
 
   <!-- Navbar -->
-   <?php include '../Includes/navbar.php'; ?>
+   <?php include './Includes/navbar.php'; ?>
 
 
   <!-- Detail Buku -->
@@ -125,7 +125,7 @@ if (!$bukuTerpilih) {
 
 
    <!-- footer start-->
-   <?php include '../includes/footer.php'; ?>
+   <?php include './includes/footer.php'; ?>
 
     <!-- footer end -->
 
