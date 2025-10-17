@@ -274,7 +274,7 @@ $booksToShow = array_slice($books, $startIndex, $perPage);
 
 <body>
     <!-- Navbar -->
-  <?php include '../Includes/navbar.php'; ?>
+  <?php include './Includes/navbar.php'; ?>
 
 
     <!-- Main Content -->
@@ -350,7 +350,7 @@ $booksToShow = array_slice($books, $startIndex, $perPage);
 
 
     <!-- footer start-->
-   <?php include '../includes/footer.php'; ?>
+   <?php include 'includes/footer.php'; ?>
 
 
     <!-- footer end -->
