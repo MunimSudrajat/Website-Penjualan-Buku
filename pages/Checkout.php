@@ -62,7 +62,15 @@ if (isset($_SESSION['cart'])) {
 
 
 <div class="container my-5">
+    <!-- Tombol Kembali -->
+    <div class="mb-3">
+        <button onclick="window.history.back()" class="btn btn-outline-dark">
+            <i class="bi bi-arrow-left"></i> Kembali
+        </button>
+    </div>
+
     <h2 class="fw-bold mb-4">🛍️ Checkout</h2>
+
 
     <?php if (empty($_SESSION['cart'])): ?>
         <div class="alert alert-info">Keranjang kamu masih kosong 😅</div>
@@ -79,9 +87,15 @@ if (isset($_SESSION['cart'])) {
                         <?php foreach ($_SESSION['cart'] as $item): ?>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 <div class="d-flex align-items-center gap-3">
-                                    <img src="<?php echo $item['image']; ?>" 
-                                        alt="<?php echo $item['title']; ?>" 
-                                        width="50" class="rounded">
+                                   <?php 
+                                        $imagePath = isset($item['image']) && !empty($item['image']) 
+                                            ? $item['image'] 
+                                            : '../assets/images/no-image.jpg'; 
+                                        ?>
+                                        <img src="<?php echo $imagePath; ?>" 
+                                            alt="<?php echo $item['title']; ?>" 
+                                            width="50" class="rounded">
+
                                     <div>
                                         <strong><?php echo $item['title']; ?></strong><br>
                                         <small>Rp<?php echo number_format($item['price'], 0, ',', '.'); ?></small>

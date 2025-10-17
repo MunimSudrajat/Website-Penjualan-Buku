@@ -16,5 +16,9 @@ $users = [
     [
         'username' => 'rizqi',
         'password' => 'rizqi123'
+    ],
+    [
+       'username' => 'fajar',
+        'password' => 'fajar123'
     ]
 ];

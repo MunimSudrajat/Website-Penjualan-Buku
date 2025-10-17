@@ -307,10 +307,11 @@ $booksToShow = array_slice($books, $startIndex, $perPage);
                                 data-id="<?php echo $book['id']; ?>"
                                 data-title="<?php echo htmlspecialchars($book['judul']); ?>"
                                 data-price="<?php echo $book['harga']; ?>"
+                                data-image="<?php echo $book['gambar']; ?>"
                                 onclick="tambahKeKeranjang(<?php echo $book['id']; ?>)">
                                 <i class="bi bi-cart-plus fs-4"></i>
                             </button>
-
+        
                             </div>
                         </div>
                     </div>

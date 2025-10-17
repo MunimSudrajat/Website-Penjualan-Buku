@@ -1,4 +1,3 @@
-
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Jalankan saat halaman dimuat
@@ -7,33 +6,29 @@ document.addEventListener('DOMContentLoaded', () => {
     tampilkanKeranjang();
 });
 
-// Fungsi saat klik tombol tambah ke keranjang
+// Tambah ke keranjang
 function tambahKeKeranjang(id) {
     const btn = document.querySelector(`[data-id='${id}']`);
     const title = btn.dataset.title;
     const price = parseInt(btn.dataset.price);
-    const image = btn.dataset.image; // tambahkan ini
+    const image = btn.dataset.image;
 
-    // Cek apakah buku sudah ada di keranjang
     const existingItem = cart.find(item => item.id === id);
     if (existingItem) {
         existingItem.quantity++;
     } else {
-        cart.push({ id, title, price, image, quantity: 1 }); // simpan image
+        cart.push({ id, title, price, image, quantity: 1 });
     }
 
-    // Simpan ke localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Update badge
     updateCartBadge();
 }
 
-
-// Update jumlah di badge navbar
+// Update badge di navbar
 function updateCartBadge() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById('cart-count').textContent = count;
+    const badge = document.getElementById('cart-count');
+    if (badge) badge.textContent = count;
 }
 
 // Tampilkan isi keranjang di modal
@@ -49,11 +44,21 @@ function tampilkanKeranjang() {
         cart.forEach(item => {
             total += item.price * item.quantity;
             list.innerHTML += `
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    ${item.title}
-                    <div>
-                        <span class="badge bg-secondary me-2">x${item.quantity}</span>
-                        <strong>Rp${item.price.toLocaleString('id-ID')}</strong>
+                <li class="list-group-item d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <img src="${item.image}" alt="${item.title}" width="40" class="me-2 rounded">
+                        <div>
+                            <strong>${item.title}</strong><br>
+                            <small>Rp${item.price.toLocaleString('id-ID')}</small>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <button class="btn btn-sm btn-outline-secondary me-1" onclick="kurangiJumlah(${item.id})">−</button>
+                        <span class="mx-1">${item.quantity}</span>
+                        <button class="btn btn-sm btn-outline-secondary me-2" onclick="tambahJumlah(${item.id})">+</button>
+                        <button class="btn btn-sm btn-outline-danger" onclick="hapusItem(${item.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
                     </div>
                 </li>
             `;
@@ -63,25 +68,54 @@ function tampilkanKeranjang() {
     totalElem.textContent = total.toLocaleString('id-ID');
 }
 
-// Fungsi kirim data ke checkout.php
+// Fungsi tambah jumlah
+function tambahJumlah(id) {
+    const item = cart.find(i => i.id === id);
+    if (item) {
+        item.quantity++;
+        simpanDanRefresh();
+    }
+}
+
+// Fungsi kurangi jumlah
+function kurangiJumlah(id) {
+    const item = cart.find(i => i.id === id);
+    if (item && item.quantity > 1) {
+        item.quantity--;
+    } else {
+        cart = cart.filter(i => i.id !== id);
+    }
+    simpanDanRefresh();
+}
+
+// Fungsi hapus item
+function hapusItem(id) {
+    cart = cart.filter(i => i.id !== id);
+    simpanDanRefresh();
+}
+
+// Simpan ulang ke localStorage & refresh tampilan modal
+function simpanDanRefresh() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+    tampilkanKeranjang();
+    updateCartBadge();
+}
+
+// Checkout (kirim ke PHP)
 document.getElementById('checkout-btn').addEventListener('click', () => {
     if (cart.length === 0) {
         alert('Keranjang masih kosong!');
         return;
     }
 
-    // Kirim data cart ke checkout.php (pakai fetch POST)
     fetch('checkout.php', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ cart })
     })
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            // Setelah berhasil disimpan ke session, arahkan ke checkout.php
             window.location.href = 'checkout.php';
         } else {
             alert('Gagal memproses keranjang 😢');
@@ -90,7 +124,4 @@ document.getElementById('checkout-btn').addEventListener('click', () => {
     .catch(err => console.error(err));
 });
 
-
-
-// Saat modal dibuka → tampilkan isi terbaru
 document.getElementById('cartModal').addEventListener('show.bs.modal', tampilkanKeranjang);
